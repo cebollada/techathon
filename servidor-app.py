@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from datetime import datetime
-
+import os
 app = Flask(__name__)
 
 # Ruta para recibir datos del ESP32
@@ -24,4 +24,5 @@ def home():
     return "Servidor REGENBOX activo"
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
